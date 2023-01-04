@@ -9,18 +9,18 @@ pipeline{
               agent any
               steps{
 		 echo 'cloning..'
-                 git 'https://github.com/theitern/DevOpsCodeDemo.git'
+                 git 'https://github.com/toyosi11/DevOpsClassCodes.git'
               }
           }
           stage('Compile'){
-              agent { label 'jenkins_slave'}
+              agent { label 'Slave1'}
               steps{
                   echo 'compiling..'
                   sh 'mvn compile'
 	      }
           }
           stage('CodeReview'){
-              agent { label 'jenkins_slave'}
+              agent { label 'Slave1'}
               steps{
 		    
 		  echo 'codeReview'
@@ -28,7 +28,7 @@ pipeline{
               }
           }
            stage('UnitTest'){
-              agent { label 'jenkins_slave'}
+              agent { label 'Slave2'}
               steps{
 	         echo 'Testing'
                   sh 'mvn test'
